@@ -110,7 +110,7 @@ function regTelCheck() {
 		x.innerHTML = "";
 		//x.setAttribute("style","color:#ff0;");
 	}
-	var data = phone;
+	var data = {"userTel" : phone};
 	$.ajax({
 		url: "../MRegTelCheck",
 		type: "post",

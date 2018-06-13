@@ -71,7 +71,7 @@ function telCheck() {
 		x.setAttribute("style","color:#3385ff;");
     	return false;  
 	}else {
-		x.innerHTML = "a";
+		x.innerHTML = "a"; //占位防止修改html时布局变化
 		x.setAttribute("style","color:#ff0;");
 		return true;
 	}
@@ -110,7 +110,7 @@ function regTelCheck() {
 		x.innerHTML = "";
 		//x.setAttribute("style","color:#ff0;");
 	}
-	var data = phone;
+	var data = {"userTel" : phone};
 	$.ajax({
 		url: "../RegTelCheck",
 		type: "post",
@@ -145,7 +145,7 @@ function regPswCheck() {
 		return true;
 	}
 }
-function miCheckbox() {
+function miCheckbox() { //没同意米团协议不能注册
 	if($("#miCheck").is(":checked")) {
 		$('#regBtn').removeAttr("disabled");
 	}else {
