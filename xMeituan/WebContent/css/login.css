@@ -2,11 +2,17 @@ body {
     font-family: "Microsoft YaHei";
     line-height: 1.5em;
 }
+#logo h2{
+    color: #fff;
+}
 #loginPart {
     background: #ff0;
 }
 #loginForm {
     width:520px;
+}
+#loginBtn {
+    margin-bottom: 22px;
 }
 #regForm {
     width:600px;
@@ -22,9 +28,18 @@ figure:after {
     height: 100%;
     top: 0;
     left: 0;
-    box-shadow:0 0 50px 50px #ffffff inset;
+    box-shadow:0 0 50px 75px #ffffff inset;
 }
 #facai {
-    width:440px;
+    width: 415px;
     display: block;
 }
+.loginError {
+    color: #f7bb43;
+}
+/*
+.loginFlexContainer {
+    display: flex;
+    flex-direction: column;
+}
+*/

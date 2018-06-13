@@ -25,7 +25,13 @@ public class LoginCheck extends HttpServlet {
         String p = request.getParameter("userPass");
         System.out.println(x);
         System.out.println(p);
-		request.getRequestDispatcher("/loginFailed.jsp").forward(request, response);
+        PrintWriter out = response.getWriter();
+        JSONArray jsonList = new JSONArray();
+        JSONObject jsonChecked = new JSONObject();
+        jsonChecked.put("checked","true");
+        jsonList.add(jsonChecked);
+        out.println(jsonList);
+		//request.getRequestDispatcher("/loginFailed.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

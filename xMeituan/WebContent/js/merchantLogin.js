@@ -11,7 +11,7 @@ function toLogin() {
 	//$(document).ready(function() {  
 	    //$("#loginBtn").click(function () {
 	/****************************************/
-	//post:200 但仍进error一般由<input>是submit类型和<button>标签，还写了onclick函数引起的冲突。还有就是dataType与服务器返回数据不一致。
+	//post:200 错误一般由<input>是submit类型和<button>标签，还写了onclick函数引起的冲突。还有就是dataType与服务器返回数据不一致。
 	/*
 	        $.ajax({
 	            url: "../LoginCheck",
@@ -36,26 +36,26 @@ function toLogin() {
 	*/
 	/*******************************************/
 	var options={
-		url:"../LoginCheck",
-		type:"post",
-		dataType:"json",
-		success: showResponse,
-	};
+			url:"../MLoginCheck",
+			type:"post",
+			dataType:null,
+			success: showResponse,
+		};
 	//$('#loginForm').ajaxForm(options); 
 	$('#loginForm').submit(function() { 
-        // inside event callbacks 'this' is the DOM element so we first 
-        // wrap it in a jQuery object and then invoke ajaxSubmit 
-		$(this).ajaxSubmit(options); 
-		
-        // !!! Important !!! 
-        // always return false to prevent standard browser submit and page navigation 
-        return false; 
-    });
+	// inside event callbacks 'this' is the DOM element so we first 
+	// wrap it in a jQuery object and then invoke ajaxSubmit 
+	$(this).ajaxSubmit(options); 
+	
+	// !!! Important !!! 
+	// always return false to prevent standard browser submit and page navigation 
+	return false; 
+	});
 }
-function showResponse(data) {
+function showResponse() {
 	for (i in data) {
 		if("true" === data[i].checked) {
-			window.location.href = "../index.html";
+			window.location.href = "../MIndex.html";
 		}
 		else {
 			$("#pswError").html("密码错误").css("color","#3385ff");
@@ -72,7 +72,7 @@ function telCheck() {
     	return false;  
 	}else {
 		x.innerHTML = "a";
-		x.setAttribute("style","color:#ff0;");
+		x.setAttribute("style","color:#f7bb43;");
 		return true;
 	}
 }
@@ -93,7 +93,7 @@ function pswCheck() {
     	return false;
 	}else {
 		x.innerHTML = "a";
-		x.setAttribute("style","color:#ff0;");
+		x.setAttribute("style","color:#f7bb43;");
 		return true;
 	}
 }
@@ -112,14 +112,14 @@ function regTelCheck() {
 	}
 	var data = phone;
 	$.ajax({
-		url: "../RegTelCheck",
+		url: "../MRegTelCheck",
 		type: "post",
 		data: data,
 		dataType: "json",
 		contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 		success: function(data) {
 			for (i in data) {
-				if("true" === data[i].checked) {
+				if("true" === data[i]) {
 					$("#regTelErr").html("该手机号已被注册").css("color","red");
 				} else {
 					$("#regTelErr").html("");
@@ -154,7 +154,7 @@ function miCheckbox() {
 }
 function toReg() {
 	var options={
-		url:"../UserReg",
+		url:"../MReg",
 		type:"post",
 		dataType:"json",
 		success: showRegResponse,
@@ -172,10 +172,10 @@ function toReg() {
 function showRegResponse(data) {
 	for (i in data) {
 		if("true" === data[i].checked) {
-			window.location.href = "../index.html";
+			window.location.href = "../MIndex.html";
 		}
 		else {
-			window.location.href = "../login.html";
+			window.location.href = "../MLogin.html";
 		}
 	}
 }
